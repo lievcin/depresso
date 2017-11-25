@@ -13,5 +13,7 @@
  *= require_tree .
  *= require_self
  */
-@import "materialize";
-@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+@import "background";
+@import "bulma_variables_override";
+@import "bulma";

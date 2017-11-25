@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Depresso</title>
+    <title>Mood Catcher</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,20 @@
   </head>
 
   <body>
-    <%= yield %>
+
+  	<nav class="navbar" role="navigation" aria-label="main navigation">
+
+      <div class="navbar-brand">
+        <a class="navbar-item" href="./">
+          Mood Catcher
+        </a>
+      </div>
+
+    </nav>
+
+    <div class="section">
+      <%= yield %>
+    </div>
+
   </body>
 </html>
