@@ -2,12 +2,8 @@ class MoodsController < ApplicationController
 
 	def index
 		@mood = Mood.new
+		@quote ||= get_quote_of_the_day
 	end
-
-  def new
-    @mood = Mood.new
-    @moods = Mood.all
-  end
 
 	def create
 	  @mood = Mood.new(mood_params)
@@ -35,6 +31,14 @@ class MoodsController < ApplicationController
 
 	def mood_params
 		params.require(:mood).permit(:score, :notes)
+	end
+
+	def get_quote_of_the_day
+		url = 'http://quotes.rest/qod.json?category=inspire'
+		uri = URI(url)
+		response = Net::HTTP.get(uri)
+		quote = JSON.parse(response)
+		quote["contents"]["quotes"][0]["quote"]
 	end
 
 end
