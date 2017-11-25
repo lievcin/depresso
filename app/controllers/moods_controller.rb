@@ -1,4 +1,5 @@
 class MoodsController < ApplicationController
+require 'net/http'
 
 	def index
 		@mood = Mood.new
