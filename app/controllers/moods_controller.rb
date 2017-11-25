@@ -3,7 +3,7 @@ require 'net/http'
 
 	def index
 		@mood = Mood.new
-		@quote ||= get_quote_of_the_day
+		@quote ||= ' ' #get_quote_of_the_day
 	end
 
 	def create
