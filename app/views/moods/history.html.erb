@@ -1,0 +1,25 @@
+<h1 class="title is-4 has-text-white">Mood history</h1>
+
+</br>
+
+<table class="table is-bordered">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Score</th>
+      <th>Notes</th>
+      <th colspan="2">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @moods.each do |mood| %>
+      <tr>
+        <td><%= mood.created_at.strftime("%d/%m/%Y") %></td>
+        <td><%= mood.score %></td>
+        <td><%= mood.notes %></td>
+        <td><%= link_to 'Edit', edit_mood_path(id: mood.id)%></td>
+        <td><%= link_to 'Delete', mood_path(id: mood.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </td>
+    <%end%>
+  </tbody>
+</table>

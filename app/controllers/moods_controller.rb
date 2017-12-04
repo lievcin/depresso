@@ -1,9 +1,15 @@
 class MoodsController < ApplicationController
 require 'net/http'
 
+  before_action :set_mood, only: [:show, :edit, :destroy]
+
 	def index
 		@mood = Mood.new
 		@quote ||= get_quote_of_the_day
+	end
+
+	def history
+		@moods = Mood.ordered_by_date
 	end
 
 	def create
@@ -18,6 +24,9 @@ require 'net/http'
 	  end
 	end
 
+  def edit
+  end
+
   def update
     respond_to do |format|
       if @mood.update(mood_params)
@@ -28,11 +37,20 @@ require 'net/http'
     end
   end
 
+  def destroy
+    @mood.destroy
+    redirect_to moods_path
+  end
+
  private
 
 	def mood_params
 		params.require(:mood).permit(:score, :notes)
 	end
+
+  def set_mood
+    @mood = Mood.find(params[:id])
+  end
 
 	def get_quote_of_the_day
 		url = 'http://quotes.rest/qod.json?category=inspire'
