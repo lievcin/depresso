@@ -1,14 +1,18 @@
 class MoodsController < ApplicationController
 require 'net/http'
 
-  before_action :set_mood, only: [:show, :edit, :destroy]
+  before_action :set_mood, only: [:show, :edit, :destroy, :update]
 
 	def index
 		@mood = Mood.new
 		@quote ||= get_quote_of_the_day
 	end
 
-	def history
+  def new
+    @mood = Mood.new
+  end
+
+  def history
 		@moods = Mood.ordered_by_date
 	end
 
@@ -30,7 +34,7 @@ require 'net/http'
   def update
     respond_to do |format|
       if @mood.update(mood_params)
-        format.html { redirect_to @mood, notice: 'Mood updated.' }
+	      format.html  { redirect_to mood_history_path }
       else
         format.html { render action: 'edit' }
       end
@@ -45,7 +49,7 @@ require 'net/http'
  private
 
 	def mood_params
-		params.require(:mood).permit(:score, :notes)
+		params.require(:mood).permit(:score, :notes, :mood_date)
 	end
 
   def set_mood

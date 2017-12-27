@@ -1,5 +1,9 @@
 <h1 class="title is-4 has-text-white">Mood history</h1>
 
+<h1 class="title is-6 has-text-white">
+  <%= link_to 'Missed a day?', new_mood_path, class: 'has-text-white' %>
+</h1>
+
 </br>
 
 <table class="table is-bordered">
@@ -14,7 +18,7 @@
   <tbody>
     <% @moods.each do |mood| %>
       <tr>
-        <td><%= mood.created_at.strftime("%d/%m/%Y") %></td>
+        <td><%= mood.mood_date.strftime("%d/%m/%Y") %></td>
         <td><%= mood.score %></td>
         <td><%= mood.notes %></td>
         <td><%= link_to 'Edit', edit_mood_path(id: mood.id)%></td>

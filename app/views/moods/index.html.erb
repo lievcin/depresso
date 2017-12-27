@@ -23,7 +23,7 @@
 
 <h1 class="title is-3 has-text-white">How has my mood changed over time?</h1>
 
-<%= area_chart Mood.group_by_day(:created_at).average(:score),
+<%= area_chart Mood.group_by_day(:mood_date).average(:score),
 							 library: { chart: { backgroundColor: nil },
 													yAxis: { gridLineColor: nil,
 																	 labels: {
