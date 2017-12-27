@@ -12,17 +12,23 @@
 
   	<nav class="navbar" role="navigation" aria-label="main navigation">
 
-      <div class="navbar-brand">
-        <a class="navbar-item" href="./">
-          Mood Catcher
-        </a>
-      </div>
-
-      <div class="navbar-menu">
-        <div class="navbar-start">
-          <a href="<%= mood_history_path %>" class="navbar-item"> Past Moods </a>
+        <div class="navbar-brand">
+          <a class="navbar-item" href="./">
+            Mood Catcher
+          </a>
+          <div id="navbarBurger" class="navbar-burger burger is-active" data-target="navMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
-      </div>
+
+
+        <div class="navbar-menu is-active" id="navMenu">
+          <div class="navbar-start">
+            <a href="<%= mood_history_path %>" class="navbar-item"> Past Moods </a>
+          </div>
+        </div>
 
     </nav>
 

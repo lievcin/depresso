@@ -13,4 +13,5 @@
 //= require rails-ujs
 //= require highcharts
 //= require chartkick
+//= require bulma-navbar
 //= require_tree .
